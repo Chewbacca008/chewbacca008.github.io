@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nom de marque | Acheteurs</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html"><span class="logo" aria-hidden="true"></span><span>Nom de marque</span></a>
+
+      <nav class="navlinks" aria-label="Navigation principale">
+        <a href="proprietes.html">Propriétés</a>
+        <a href="acheteurs.html">Acheteurs</a>
+        <a href="vendeurs.html">Vendeurs</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <span class="chip">FR / EN</span>
+        <a class="btn primary" href="contact.html">Contactez-moi</a>
+        <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
+      </div>
+    </div>
+
+    <div class="mobilemenu" id="mobilemenu" aria-label="Menu mobile">
+      <a href="proprietes.html">Propriétés</a>
+      <a href="acheteurs.html">Acheteurs</a>
+      <a href="vendeurs.html">Vendeurs</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <div class="hero-card">
+      <div class="kicker">Acheteurs</div>
+      <h1>Je négocie votre future adresse comme si c’était la mienne.</h1>
+      <p>Ressources + étapes + accès aux propriétés.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="proprietes.html">Voir toutes les propriétés</a>
+        <a class="btn" href="contact.html?subject=Plan%20d%27achat">Parler de mon projet</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <div>
+        <div class="kicker">Ressources pour acheteurs</div>
+        <h2>Commencez avec les connaissances nécessaires</h2>
+        <p>Cards “En savoir plus” (tu peux lier vers des articles internes).</p>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>Protégez-vous avec un courtier</h3>
+        <p>Cadre légal, protection, rôle et limites.</p>
+        <div style="margin-top:12px;"><a class="btn" href="article.html?slug=role-courtier-avant-apres">En savoir plus</a></div>
+      </div>
+      <div class="card">
+        <h3>Devenir propriétaire</h3>
+        <p>Préapprobation, budget, planification et objectifs.</p>
+        <div style="margin-top:12px;"><a class="btn" href="blog.html">En savoir plus</a></div>
+      </div>
+      <div class="card">
+        <h3>5 erreurs à éviter</h3>
+        <p>Erreurs fréquentes + comment les prévenir.</p>
+        <div style="margin-top:12px;"><a class="btn" href="blog.html">En savoir plus</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <div>
+        <div class="kicker">Guide d'achat</div>
+        <h2>Téléchargez mon plan d’achat</h2>
+        <p>Formulaire simple (démo). Connecte-le à Mailchimp / CRM / backend ensuite.</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Recevoir le guide</h3>
+        <form onsubmit="event.preventDefault(); alert('Démo: connecter à un service d’email/CRM');">
+          <input required placeholder="Nom complet" />
+          <input required type="email" placeholder="Courriel" />
+          <label style="display:flex; gap:10px; align-items:flex-start; color:var(--muted); font-size:14px;">
+            <input type="checkbox" required />
+            <span>J'accepte d'être contacté par courriel ou téléphone.</span>
+          </label>
+          <button class="btn primary" type="submit">Télécharger</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3>Prochaines étapes</h3>
+        <p>1) Préapprobation · 2) Critères · 3) Visites · 4) Offre · 5) Inspection · 6) Notaire</p>
+        <div style="margin-top:12px;">
+          <a class="btn" href="contact.html?subject=Préapprobation">Parler budget</a>
+          <a class="btn" href="proprietes.html">Configurer mes alertes</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand"><span class="logo" aria-hidden="true"></span><span>Nom de marque</span></div>
+        <p style="margin-top:10px;">Courtier(ère) immobilier(ère) résidentiel(le) et commercial(e).</p>
+        <p style="margin-top:10px;">📞 (xxx) xxx-xxxx · ✉️ courriel@domaine.com</p>
+        <p style="margin-top:10px;">© <span id="year"></span> — Tous droits réservés.</p>
+      </div>
+
+      <div>
+        <h4>Menu</h4>
+        <div class="footer-links">
+          <a href="proprietes.html">Propriétés</a>
+          <a href="acheteurs.html">Acheteurs</a>
+          <a href="vendeurs.html">Vendeurs</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Outils</h4>
+        <div class="footer-links">
+          <a href="#" target="_blank" rel="noreferrer">Calculateur de prêt hypothécaire</a>
+          <a href="#" target="_blank" rel="noreferrer">Taxe de mutation</a>
+        </div>
+
+        <h4 style="margin-top:16px;">Villes / Types</h4>
+        <div class="pills">
+          <a href="proprietes.html?city=Montcalm">Montcalm</a>
+          <a href="proprietes.html?city=Mirabel">Mirabel</a>
+          <a href="proprietes.html?city=Rawdon">Rawdon</a>
+          <a href="proprietes.html?type=Terrain">Terrain</a>
+          <a href="proprietes.html?type=Appartement">Appartement</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="module">import "./assets/main.js";</script>
+</body>
+</html>

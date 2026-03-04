@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nom de marque | Article</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html"><span class="logo" aria-hidden="true"></span><span>Nom de marque</span></a>
+
+      <nav class="navlinks" aria-label="Navigation principale">
+        <a href="proprietes.html">Propriétés</a>
+        <a href="acheteurs.html">Acheteurs</a>
+        <a href="vendeurs.html">Vendeurs</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <span class="chip">FR / EN</span>
+        <a class="btn primary" href="contact.html">Contactez-moi</a>
+        <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
+      </div>
+    </div>
+
+    <div class="mobilemenu" id="mobilemenu" aria-label="Menu mobile">
+      <a href="proprietes.html">Propriétés</a>
+      <a href="acheteurs.html">Acheteurs</a>
+      <a href="vendeurs.html">Vendeurs</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div class="hero-card">
+      <div class="kicker" id="meta"></div>
+      <h1 id="title">Article</h1>
+      <p id="excerpt"></p>
+      <div class="hero-actions">
+        <a class="btn" href="blog.html">← Retour au blog</a>
+        <a class="btn primary" href="contact.html?subject=Question%20blog">Me contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <article class="article" id="content"></article>
+  </section>
+</main>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand"><span class="logo" aria-hidden="true"></span><span>Nom de marque</span></div>
+        <p style="margin-top:10px;">Courtier(ère) immobilier(ère) résidentiel(le) et commercial(e).</p>
+        <p style="margin-top:10px;">📞 (xxx) xxx-xxxx · ✉️ courriel@domaine.com</p>
+        <p style="margin-top:10px;">© <span id="year"></span> — Tous droits réservés.</p>
+      </div>
+
+      <div>
+        <h4>Menu</h4>
+        <div class="footer-links">
+          <a href="proprietes.html">Propriétés</a>
+          <a href="acheteurs.html">Acheteurs</a>
+          <a href="vendeurs.html">Vendeurs</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Outils</h4>
+        <div class="footer-links">
+          <a href="#" target="_blank" rel="noreferrer">Calculateur de prêt hypothécaire</a>
+          <a href="#" target="_blank" rel="noreferrer">Taxe de mutation</a>
+        </div>
+
+        <h4 style="margin-top:16px;">Villes / Types</h4>
+        <div class="pills">
+          <a href="proprietes.html?city=Montcalm">Montcalm</a>
+          <a href="proprietes.html?city=Mirabel">Mirabel</a>
+          <a href="proprietes.html?city=Rawdon">Rawdon</a>
+          <a href="proprietes.html?type=Terrain">Terrain</a>
+          <a href="proprietes.html?type=Appartement">Appartement</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import "./assets/main.js";
+  import { POSTS } from "./data/posts.js";
+  import { qs } from "./assets/main.js";
+
+  const slug = qs("slug");
+  const post = POSTS.find(p => p.slug === slug) ?? POSTS[0];
+
+  document.title = `Nom de marque | ${post.title}`;
+  document.getElementById("meta").textContent = `${post.date} · ${post.minutes} min`;
+  document.getElementById("title").textContent = post.title;
+  document.getElementById("excerpt").textContent = post.excerpt;
+  document.getElementById("content").innerHTML = post.content;
+</script>
+</body>
+</html>

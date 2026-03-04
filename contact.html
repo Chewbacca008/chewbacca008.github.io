@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nom de marque | Contact</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html"><span class="logo" aria-hidden="true"></span><span>Nom de marque</span></a>
+
+      <nav class="navlinks" aria-label="Navigation principale">
+        <a href="proprietes.html">Propriétés</a>
+        <a href="acheteurs.html">Acheteurs</a>
+        <a href="vendeurs.html">Vendeurs</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <span class="chip">FR / EN</span>
+        <a class="btn primary" href="contact.html">Contactez-moi</a>
+        <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
+      </div>
+    </div>
+
+    <div class="mobilemenu" id="mobilemenu" aria-label="Menu mobile">
+      <a href="proprietes.html">Propriétés</a>
+      <a href="acheteurs.html">Acheteurs</a>
+      <a href="vendeurs.html">Vendeurs</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <div class="hero-card">
+      <div class="kicker">Parlons immobilier</div>
+      <h1>Parlons de votre projet immobilier.</h1>
+      <p>Partagez vos objectifs — on vous revient avec une solution sur mesure.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Votre courtier</h3>
+        <p><strong>Votre nom</strong><br/>Courtier(ère) immobilier(ère)</p>
+        <p style="margin-top:10px;">📍 Adresse (optionnel)</p>
+        <p style="margin-top:10px;">📞 (xxx) xxx-xxxx</p>
+        <p style="margin-top:10px;">✉️ courriel@domaine.com</p>
+        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="#">Instagram</a>
+          <a class="btn" href="#">Facebook</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Envoyer un message</h3>
+        <form onsubmit="event.preventDefault(); alert('Démo — connecte à un backend/email.');">
+          <input required placeholder="Nom complet" />
+          <input required type="email" placeholder="Courriel" />
+          <input id="subject" placeholder="Sujet (ex: analyse de prix)" />
+          <textarea required placeholder="Décris ton projet (achat/vente, secteur, budget, échéancier)…"></textarea>
+          <button class="btn primary" type="submit">Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand"><span class="logo" aria-hidden="true"></span><span>Nom de marque</span></div>
+        <p style="margin-top:10px;">Courtier(ère) immobilier(ère) résidentiel(le) et commercial(e).</p>
+        <p style="margin-top:10px;">📞 (xxx) xxx-xxxx · ✉️ courriel@domaine.com</p>
+        <p style="margin-top:10px;">© <span id="year"></span> — Tous droits réservés.</p>
+      </div>
+
+      <div>
+        <h4>Menu</h4>
+        <div class="footer-links">
+          <a href="proprietes.html">Propriétés</a>
+          <a href="acheteurs.html">Acheteurs</a>
+          <a href="vendeurs.html">Vendeurs</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Outils</h4>
+        <div class="footer-links">
+          <a href="#" target="_blank" rel="noreferrer">Calculateur de prêt hypothécaire</a>
+          <a href="#" target="_blank" rel="noreferrer">Taxe de mutation</a>
+        </div>
+
+        <h4 style="margin-top:16px;">Villes / Types</h4>
+        <div class="pills">
+          <a href="proprietes.html?city=Montcalm">Montcalm</a>
+          <a href="proprietes.html?city=Mirabel">Mirabel</a>
+          <a href="proprietes.html?city=Rawdon">Rawdon</a>
+          <a href="proprietes.html?type=Terrain">Terrain</a>
+          <a href="proprietes.html?type=Appartement">Appartement</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import "./assets/main.js";
+  import { qs } from "./assets/main.js";
+  const s = qs("subject");
+  if (s) document.getElementById("subject").value = s;
+</script>
+</body>
+</html>

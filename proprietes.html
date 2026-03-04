@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nom de marque | Propriétés</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html"><span class="logo" aria-hidden="true"></span><span>Nom de marque</span></a>
+
+      <nav class="navlinks" aria-label="Navigation principale">
+        <a href="proprietes.html">Propriétés</a>
+        <a href="acheteurs.html">Acheteurs</a>
+        <a href="vendeurs.html">Vendeurs</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <span class="chip">FR / EN</span>
+        <a class="btn primary" href="contact.html">Contactez-moi</a>
+        <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
+      </div>
+    </div>
+
+    <div class="mobilemenu" id="mobilemenu" aria-label="Menu mobile">
+      <a href="proprietes.html">Propriétés</a>
+      <a href="acheteurs.html">Acheteurs</a>
+      <a href="vendeurs.html">Vendeurs</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <div class="hero-card">
+      <div class="kicker">Nos propriétés</div>
+      <h1>Trouver votre propriété de rêve</h1>
+      <p>Recherche simple + filtres. (Ajoute ensuite ta connexion MLS si besoin.)</p>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h3>Recherche</h3>
+
+      <div class="filters">
+        <select id="city">
+          <option value="">Ville (toutes)</option>
+        </select>
+
+        <select id="type">
+          <option value="">Type (tous)</option>
+        </select>
+
+        <select id="mode">
+          <option value="">Vente / Location</option>
+          <option value="vente">Vente</option>
+          <option value="location">Location</option>
+        </select>
+
+        <input id="q" placeholder="Mot-clé (ex: lac, duplex...)" />
+      </div>
+
+      <div class="filters">
+        <input id="min" type="number" placeholder="Prix min" />
+        <input id="max" type="number" placeholder="Prix max" />
+        <select id="sort">
+          <option value="price-asc">Trier: Prix ↑</option>
+          <option value="price-desc">Trier: Prix ↓</option>
+          <option value="city-asc">Trier: Ville A→Z</option>
+        </select>
+        <button class="btn primary" id="apply">Rechercher</button>
+      </div>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
+        <button class="btn" id="reset">Rafraîchir</button>
+        <span class="chip" id="count">0 résultat</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <div>
+        <div class="kicker">Résultats</div>
+        <h2>Découvrez nos propriétés</h2>
+        <p>Cartes générées automatiquement depuis <code>data/listings.js</code>.</p>
+      </div>
+    </div>
+
+    <div class="grid-3" id="grid"></div>
+  </section>
+
+</main>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand"><span class="logo" aria-hidden="true"></span><span>Nom de marque</span></div>
+        <p style="margin-top:10px;">Courtier(ère) immobilier(ère) résidentiel(le) et commercial(e).</p>
+        <p style="margin-top:10px;">📞 (xxx) xxx-xxxx · ✉️ courriel@domaine.com</p>
+        <p style="margin-top:10px;">© <span id="year"></span> — Tous droits réservés.</p>
+      </div>
+
+      <div>
+        <h4>Menu</h4>
+        <div class="footer-links">
+          <a href="proprietes.html">Propriétés</a>
+          <a href="acheteurs.html">Acheteurs</a>
+          <a href="vendeurs.html">Vendeurs</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Outils</h4>
+        <div class="footer-links">
+          <a href="#" target="_blank" rel="noreferrer">Calculateur de prêt hypothécaire</a>
+          <a href="#" target="_blank" rel="noreferrer">Taxe de mutation</a>
+        </div>
+
+        <h4 style="margin-top:16px;">Villes / Types</h4>
+        <div class="pills">
+          <a href="proprietes.html?city=Montcalm">Montcalm</a>
+          <a href="proprietes.html?city=Mirabel">Mirabel</a>
+          <a href="proprietes.html?city=Rawdon">Rawdon</a>
+          <a href="proprietes.html?type=Terrain">Terrain</a>
+          <a href="proprietes.html?type=Appartement">Appartement</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script type="module">
+  import "./assets/main.js";
+  import { LISTINGS } from "./data/listings.js";
+  import { money, qs, setQS } from "./assets/main.js";
+
+  const grid = document.getElementById("grid");
+  const cityEl = document.getElementById("city");
+  const typeEl = document.getElementById("type");
+  const modeEl = document.getElementById("mode");
+  const qEl = document.getElementById("q");
+  const minEl = document.getElementById("min");
+  const maxEl = document.getElementById("max");
+  const sortEl = document.getElementById("sort");
+  const countEl = document.getElementById("count");
+
+  // Populate selects
+  const cities = [...new Set(LISTINGS.map(l => l.city))].sort();
+  const types  = [...new Set(LISTINGS.map(l => l.type))].sort();
+  cityEl.insertAdjacentHTML("beforeend", cities.map(c => `<option>${c}</option>`).join(""));
+  typeEl.insertAdjacentHTML("beforeend", types.map(t => `<option>${t}</option>`).join(""));
+
+  function readQS(){
+    cityEl.value = qs("city") ?? "";
+    typeEl.value = qs("type") ?? "";
+    modeEl.value = qs("mode") ?? "";
+    qEl.value    = qs("q") ?? "";
+    minEl.value  = qs("min") ?? "";
+    maxEl.value  = qs("max") ?? "";
+    sortEl.value = qs("sort") ?? "price-asc";
+  }
+
+  function apply(){
+    const city = cityEl.value.trim();
+    const type = typeEl.value.trim();
+    const mode = modeEl.value.trim();
+    const q    = qEl.value.trim().toLowerCase();
+    const min  = minEl.value ? Number(minEl.value) : null;
+    const max  = maxEl.value ? Number(maxEl.value) : null;
+    const sort = sortEl.value;
+
+    setQS({ city, type, mode, q, min, max, sort });
+
+    let list = [...LISTINGS];
+
+    if (city) list = list.filter(l => l.city === city);
+    if (type) list = list.filter(l => l.type === type);
+    if (mode) list = list.filter(l => l.mode === mode);
+    if (q)    list = list.filter(l => (l.title + " " + l.city + " " + l.type).toLowerCase().includes(q));
+    if (min !== null) list = list.filter(l => l.price >= min);
+    if (max !== null) list = list.filter(l => l.price <= max);
+
+    if (sort === "price-asc")  list.sort((a,b) => a.price - b.price);
+    if (sort === "price-desc") list.sort((a,b) => b.price - a.price);
+    if (sort === "city-asc")   list.sort((a,b) => a.city.localeCompare(b.city, "fr"));
+
+    countEl.textContent = `${list.length} résultat${list.length>1?"s":""}`;
+
+    grid.innerHTML = list.map(l => `
+      <article class="card listing">
+        <div class="thumb" aria-label="Photo propriété (placeholder)"></div>
+        <div class="listing-body">
+          <strong>${l.title} — ${l.city}</strong>
+          <div class="meta">
+            <span class="price">${l.mode === "location" ? money(l.price) + " /mois" : money(l.price)}</span>
+            <span class="tag">${l.type}</span>
+            <span class="tag">${l.beds} ch</span>
+            <span class="tag">${l.baths} sdb</span>
+          </div>
+          <a class="btn" href="contact.html?subject=${encodeURIComponent("Info propriété " + l.id)}">Demander info</a>
+        </div>
+      </article>
+    `).join("");
+  }
+
+  document.getElementById("apply").addEventListener("click", apply);
+  document.getElementById("reset").addEventListener("click", () => {
+    cityEl.value = ""; typeEl.value=""; modeEl.value=""; qEl.value=""; minEl.value=""; maxEl.value=""; sortEl.value="price-asc";
+    setQS({ city:"", type:"", mode:"", q:"", min:"", max:"", sort:"price-asc" });
+    apply();
+  });
+
+  readQS();
+  apply();
+</script>
+</body>
+</html>

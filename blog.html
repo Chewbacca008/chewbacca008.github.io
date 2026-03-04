@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nom de marque | Blog</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html"><span class="logo" aria-hidden="true"></span><span>Nom de marque</span></a>
+
+      <nav class="navlinks" aria-label="Navigation principale">
+        <a href="proprietes.html">Propriétés</a>
+        <a href="acheteurs.html">Acheteurs</a>
+        <a href="vendeurs.html">Vendeurs</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <span class="chip">FR / EN</span>
+        <a class="btn primary" href="contact.html">Contactez-moi</a>
+        <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
+      </div>
+    </div>
+
+    <div class="mobilemenu" id="mobilemenu" aria-label="Menu mobile">
+      <a href="proprietes.html">Propriétés</a>
+      <a href="acheteurs.html">Acheteurs</a>
+      <a href="vendeurs.html">Vendeurs</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <div class="hero-card">
+      <div class="kicker">Blog</div>
+      <h1>Notre Blog</h1>
+      <p>Articles, conseils et actualités pour aider à prendre les meilleures décisions.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <div>
+        <div class="kicker">Articles</div>
+        <h2>Nos derniers articles</h2>
+        <p id="range"></p>
+      </div>
+    </div>
+
+    <div class="grid-3" id="posts"></div>
+    <div class="pager" id="pager"></div>
+  </section>
+
+</main>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand"><span class="logo" aria-hidden="true"></span><span>Nom de marque</span></div>
+        <p style="margin-top:10px;">Courtier(ère) immobilier(ère) résidentiel(le) et commercial(e).</p>
+        <p style="margin-top:10px;">📞 (xxx) xxx-xxxx · ✉️ courriel@domaine.com</p>
+        <p style="margin-top:10px;">© <span id="year"></span> — Tous droits réservés.</p>
+      </div>
+
+      <div>
+        <h4>Menu</h4>
+        <div class="footer-links">
+          <a href="proprietes.html">Propriétés</a>
+          <a href="acheteurs.html">Acheteurs</a>
+          <a href="vendeurs.html">Vendeurs</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Outils</h4>
+        <div class="footer-links">
+          <a href="#" target="_blank" rel="noreferrer">Calculateur de prêt hypothécaire</a>
+          <a href="#" target="_blank" rel="noreferrer">Taxe de mutation</a>
+        </div>
+
+        <h4 style="margin-top:16px;">Villes / Types</h4>
+        <div class="pills">
+          <a href="proprietes.html?city=Montcalm">Montcalm</a>
+          <a href="proprietes.html?city=Mirabel">Mirabel</a>
+          <a href="proprietes.html?city=Rawdon">Rawdon</a>
+          <a href="proprietes.html?type=Terrain">Terrain</a>
+          <a href="proprietes.html?type=Appartement">Appartement</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import "./assets/main.js";
+  import { POSTS } from "./data/posts.js";
+  import { qs, setQS } from "./assets/main.js";
+
+  const perPage = 6;
+  const page = Math.max(1, Number(qs("page") ?? 1));
+  const start = (page - 1) * perPage;
+  const slice = POSTS.slice(start, start + perPage);
+
+  document.getElementById("posts").innerHTML = slice.map(p => `
+    <div class="card">
+      <div class="kicker">${p.date} · ${p.minutes} min</div>
+      <h3>${p.title}</h3>
+      <p>${p.excerpt}</p>
+      <div style="margin-top:12px;">
+        <a class="btn" href="article.html?slug=${encodeURIComponent(p.slug)}">Lire</a>
+      </div>
+    </div>
+  `).join("");
+
+  const totalPages = Math.max(1, Math.ceil(POSTS.length / perPage));
+  document.getElementById("range").textContent =
+    `Affichage de ${Math.min(start+1, POSTS.length)} à ${Math.min(start+perPage, POSTS.length)} sur ${POSTS.length} articles`;
+
+  const pager = document.getElementById("pager");
+  const btn = (label, p, primary=false) =>
+    `<button class="btn ${primary?"primary":""}" data-p="${p}">${label}</button>`;
+
+  let html = "";
+  if (page > 1) html += btn("Précédent", page-1);
+  for (let p=1; p<=totalPages; p++) html += btn(String(p), p, p===page);
+  if (page < totalPages) html += btn("Suivant", page+1);
+  pager.innerHTML = html;
+
+  pager.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+    setQS({ page: b.dataset.p });
+    location.reload();
+  }));
+</script>
+</body>
+</html>

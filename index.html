@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nom de marque | Accueil</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html"><span class="logo" aria-hidden="true"></span><span>Nom de marque</span></a>
+
+      <nav class="navlinks" aria-label="Navigation principale">
+        <a href="proprietes.html">Propriétés</a>
+        <a href="acheteurs.html">Acheteurs</a>
+        <a href="vendeurs.html">Vendeurs</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <span class="chip">FR / EN</span>
+        <a class="btn primary" href="contact.html">Contactez-moi</a>
+        <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
+      </div>
+    </div>
+
+    <div class="mobilemenu" id="mobilemenu" aria-label="Menu mobile">
+      <a href="proprietes.html">Propriétés</a>
+      <a href="acheteurs.html">Acheteurs</a>
+      <a href="vendeurs.html">Vendeurs</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-card">
+        <div class="kicker">Immobilier — Laurentides & Montréal</div>
+        <h1>Le rêve du Nord commence ici.</h1>
+        <p>Stratégie claire, soutien complet et suivi personnalisé à chaque étape.</p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="proprietes.html">Explorer les propriétés</a>
+          <a class="btn" href="acheteurs.html">Je suis acheteur</a>
+          <a class="btn" href="vendeurs.html">Je suis vendeur</a>
+        </div>
+      </div>
+
+      <aside class="hero-side">
+        <div class="mini"><strong>60+</strong><span>Projets complétés</span></div>
+        <div class="mini"><strong>70+</strong><span>Clients satisfaits</span></div>
+        <div class="mini"><strong>25M$+</strong><span>Valeur des projets</span></div>
+        <div class="mini"><strong>95%</strong><span>Taux de fidélisation</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <div>
+        <div class="kicker">Mes services</div>
+        <h2>Des solutions réfléchies, centrées sur vos projets.</h2>
+        <p>Maison, chalet, terrain, fermette ou projet à développer — on avance avec méthode.</p>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="kicker">01</div>
+        <h3>Accompagnement acheteur</h3>
+        <p>Visites, comparables, négociation et lecture des documents.</p>
+        <div style="margin-top:12px;"><a class="btn" href="acheteurs.html">Voir le parcours</a></div>
+      </div>
+      <div class="card">
+        <div class="kicker">02</div>
+        <h3>Stratégie vendeur</h3>
+        <p>Analyse de prix réaliste + plan de mise en marché.</p>
+        <div style="margin-top:12px;"><a class="btn" href="vendeurs.html">Voir la stratégie</a></div>
+      </div>
+      <div class="card">
+        <div class="kicker">03</div>
+        <h3>Rencontrons-nous</h3>
+        <p>Consultation gratuite pour cadrer votre plan.</p>
+        <div style="margin-top:12px;"><a class="btn primary" href="contact.html">Réserver</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <div>
+        <div class="kicker">Propriétés en vedette</div>
+        <h2>Découvrez des propriétés uniques</h2>
+        <p>Exemples mock — la page Propriétés contient la recherche + filtres.</p>
+      </div>
+      <a class="btn" href="proprietes.html">Voir toutes les propriétés</a>
+    </div>
+
+    <div class="grid-3" id="featured"></div>
+  </section>
+
+  <section>
+    <div class="section-title">
+      <div>
+        <div class="kicker">Blog</div>
+        <h2>Conseils & marché immobilier</h2>
+        <p>3 derniers articles.</p>
+      </div>
+      <a class="btn" href="blog.html">Voir le blog</a>
+    </div>
+    <div class="grid-3" id="latestPosts"></div>
+  </section>
+
+</main>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand"><span class="logo" aria-hidden="true"></span><span>Nom de marque</span></div>
+        <p style="margin-top:10px;">Courtier(ère) immobilier(ère) résidentiel(le) et commercial(e).</p>
+        <p style="margin-top:10px;">📞 (xxx) xxx-xxxx · ✉️ courriel@domaine.com</p>
+        <p style="margin-top:10px;">© <span id="year"></span> — Tous droits réservés.</p>
+      </div>
+
+      <div>
+        <h4>Menu</h4>
+        <div class="footer-links">
+          <a href="proprietes.html">Propriétés</a>
+          <a href="acheteurs.html">Acheteurs</a>
+          <a href="vendeurs.html">Vendeurs</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Outils</h4>
+        <div class="footer-links">
+          <a href="#" target="_blank" rel="noreferrer">Calculateur de prêt hypothécaire</a>
+          <a href="#" target="_blank" rel="noreferrer">Taxe de mutation</a>
+        </div>
+
+        <h4 style="margin-top:16px;">Villes / Types</h4>
+        <div class="pills">
+          <a href="proprietes.html?city=Montcalm">Montcalm</a>
+          <a href="proprietes.html?city=Mirabel">Mirabel</a>
+          <a href="proprietes.html?city=Rawdon">Rawdon</a>
+          <a href="proprietes.html?type=Terrain">Terrain</a>
+          <a href="proprietes.html?type=Appartement">Appartement</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script type="module">
+  import "./assets/main.js";
+  import { LISTINGS } from "./data/listings.js";
+  import { POSTS } from "./data/posts.js";
+  import { money } from "./assets/main.js";
+
+  // Featured listings (3)
+  const featured = LISTINGS.slice(0,3);
+  const el = document.getElementById("featured");
+  el.innerHTML = featured.map(l => `
+    <article class="card listing">
+      <div class="thumb" aria-label="Photo propriété (placeholder)"></div>
+      <div class="listing-body">
+        <strong>${l.title} — ${l.city}</strong>
+        <div class="meta">
+          <span class="price">${l.mode === "location" ? money(l.price) + " /mois" : money(l.price)}</span>
+          <span class="tag">${l.type}</span>
+          <span class="tag">${l.beds} ch</span>
+          <span class="tag">${l.baths} sdb</span>
+        </div>
+        <a class="btn" href="proprietes.html?mls=${encodeURIComponent(l.id)}">Voir</a>
+      </div>
+    </article>
+  `).join("");
+
+  // Latest posts (3)
+  const latest = POSTS.slice(0,3);
+  const p = document.getElementById("latestPosts");
+  p.innerHTML = latest.map(post => `
+    <div class="card">
+      <div class="kicker">${post.date} · ${post.minutes} min</div>
+      <h3>${post.title}</h3>
+      <p>${post.excerpt}</p>
+      <div style="margin-top:12px;">
+        <a class="btn" href="article.html?slug=${encodeURIComponent(post.slug)}">Lire</a>
+      </div>
+    </div>
+  `).join("");
+</script>
+</body>
+</html>
