@@ -44,8 +44,8 @@ header{
   font-weight:700; letter-spacing:.2px;
 }
 .logo{
+  background-image: url('data/logo_erable_fond_noir.png');
   width:34px; height:34px; border-radius:12px;
-  background: linear-gradient(135deg, rgba(231,195,138,.95), rgba(154,209,255,.75));
   box-shadow: 0 10px 25px rgba(231,195,138,.16);
 }
 .navlinks{
